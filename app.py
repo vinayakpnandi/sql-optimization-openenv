@@ -47,10 +47,16 @@ def health():
 class ResetRequest(BaseModel):
     session_id: Optional[str] = None
     task_id: Optional[str] = None   # "task_easy" | "task_medium" | "task_hard"
+    
+    class Config:
+        # Allow both empty and populated bodies
+        extra = "ignore"
 
 
 @app.post("/reset")
-def reset(req: ResetRequest):
+def reset(req: Optional[ResetRequest] = None):
+    if req is None:
+        req = ResetRequest()
     sid = req.session_id or str(uuid.uuid4())
     env = _get_or_create(sid, task_id=req.task_id)
     obs = env.reset(task_id=req.task_id)
