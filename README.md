@@ -1,3 +1,13 @@
+---
+title: SQL Optimization OpenEnv
+emoji: 🗄️⚡
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_file: app.py
+pinned: false
+---
+
 # SQL Optimization OpenEnv 🗄️⚡
 
 An **OpenEnv-compliant** reinforcement learning environment where an AI agent learns to optimize SQL queries. The agent receives poorly-written SQL (with `SELECT *`, N+1 subqueries, broken aggregations) and must rewrite them to be correct, performant, and follow best practices.
