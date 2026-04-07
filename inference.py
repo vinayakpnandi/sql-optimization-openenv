@@ -228,5 +228,10 @@ async def main() -> None:
     print(json.dumps({"type": "SUMMARY", "scores": dict(zip(task_ids, all_scores)), "mean": round(sum(all_scores)/len(all_scores), 4)}), flush=True)
 
 
+def entry_point():
+    """Entry point for package installation that handles async main."""
+    asyncio.run(main())
+
+
 if __name__ == "__main__":
     asyncio.run(main())

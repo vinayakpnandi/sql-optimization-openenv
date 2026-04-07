@@ -54,9 +54,10 @@ test = [
 ]
 
 [project.scripts]
+server = "server.app:main"
 sql-optimization-server = "server.app:main"
 sql-optimization-api = "server.app:main"
-sql-optimization-inference = "inference:main"
+sql-optimization-inference = "inference:entry_point"
 
 [project.urls]
 Homepage = "https://github.com/vinayakpnandi/sql-optimization-openenv"
