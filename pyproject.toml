@@ -36,6 +36,7 @@ dependencies = [
     "openai==1.57.0",
     "pyyaml==6.0.2",
     "httpx==0.28.1",
+    "openenv-core>=0.2.0",
 ]
 
 [project.optional-dependencies]
@@ -53,7 +54,8 @@ test = [
 ]
 
 [project.scripts]
-sql-optimization-api = "app:main"
+sql-optimization-server = "server.app:main"
+sql-optimization-api = "server.app:main"
 sql-optimization-inference = "inference:main"
 
 [project.urls]
@@ -63,7 +65,7 @@ Repository = "https://github.com/vinayakpnandi/sql-optimization-openenv.git"
 Documentation = "https://github.com/vinayakpnandi/sql-optimization-openenv#readme"
 
 [tool.setuptools]
-packages = ["env"]
+packages = ["env", "server"]
 
 [tool.black]
 line-length = 100
@@ -124,7 +126,7 @@ python_functions = ["test_*"]
 addopts = "-v --tb=short"
 
 [tool.coverage.run]
-source = ["env", "app.py", "inference.py"]
+source = ["env", "server", "inference.py"]
 omit = [
     "*/__init__.py",
     "*/tests/*",
