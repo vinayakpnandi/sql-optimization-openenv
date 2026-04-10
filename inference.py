@@ -36,26 +36,13 @@ MAX_TOKENS: int = 512
 # ── Logging helpers (required format) ────────────────────────────────────────
 
 def log_start(task: str, env: str, model: str):
-    print(json.dumps({"type": "START", "task": task, "env": env, "model": model}), flush=True)
+    print(f"[START] task={task}", flush=True)
 
 def log_step(step: int, action: dict, observation: dict, reward: float, done: bool):
-    print(json.dumps({
-        "type": "STEP",
-        "step": step,
-        "action": action,
-        "observation": observation,
-        "reward": reward,
-        "done": done,
-    }), flush=True)
+    print(f"[STEP] step={step} reward={reward}", flush=True)
 
 def log_end(task: str, score: float, steps: int, success: bool):
-    print(json.dumps({
-        "type": "END",
-        "task": task,
-        "score": score,
-        "steps": steps,
-        "success": success,
-    }), flush=True)
+    print(f"[END] task={task} score={score} steps={steps}", flush=True)
 
 # ── Local env shim (avoids needing a running Docker container for baseline) ───
 
